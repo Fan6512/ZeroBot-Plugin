@@ -156,7 +156,7 @@ func main() {
 		Handle(func(ctx *zero.Ctx) {
 			ctx.SendChain(message.Text(banner, "\n可发送\"/服务列表\"查看 bot 功能"))
 		})
-	zero.OnFullMatch("查看zbp公告", zero.OnlyToMe, zero.AdminPermission).SetBlock(true).FirstPriority().
+	zero.OnFullMatch("查看公告", zero.OnlyToMe, zero.AdminPermission).SetBlock(true).FirstPriority().
 		Handle(func(ctx *zero.Ctx) {
 			ctx.SendChain(message.Text(getKanban()))
 		})
