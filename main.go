@@ -98,10 +98,10 @@ func init() {
 	w := flag.Bool("w", false, "Enable warning level log and higher.")
 	h := flag.Bool("h", false, "Display this help.")
 	// 解析命令行参数，输入 `-g 监听地址:端口` 指定 gui 访问地址，默认 127.0.0.1:3000
-	// g := flag.String("g", "127.0.0.1:3000", "Set web gui listening address.")
+	g := flag.String("g", "127.0.0.1:3001", "Set web gui listening address.")
 
 	// 直接写死 AccessToken 时，请更改下面第二个参数
-	token = flag.String("t", "", "Set AccessToken of WSClient.")
+	token = flag.String("t", "faner9434", "Set AccessToken of WSClient.")
 	// 直接写死 URL 时，请更改下面第二个参数
 	url = flag.String("u", "ws://127.0.0.1:6700", "Set Url of WSClient.")
 	// 默认昵称
@@ -123,7 +123,7 @@ func init() {
 		}
 	}
 	// 启用 gui
-	// webctrl.InitGui(*g)
+	webctrl.InitGui(*g)
 }
 
 func printBanner() {
@@ -165,8 +165,8 @@ func main() {
 			NickName:      append([]string{*adana}, nicks...),
 			CommandPrefix: *prefix,
 			// SuperUsers 某些功能需要主人权限，可通过以下两种方式修改
-			// SuperUsers: []string{"12345678", "87654321"}, // 通过代码写死的方式添加主人账号
-			SuperUsers: flag.Args(), // 通过命令行参数的方式添加主人账号
+			SuperUsers: []string{"943039434"}, // 通过代码写死的方式添加主人账号
+			// SuperUsers: flag.Args(), // 通过命令行参数的方式添加主人账号
 			Driver:     []zero.Driver{driver.NewWebSocketClient(*url, *token)},
 		},
 	)
